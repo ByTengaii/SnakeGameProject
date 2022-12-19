@@ -1,0 +1,89 @@
+package com.example.snakegame;
+
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
+import java.awt.*;
+
+public class Food {
+    private static final String[] FOODS_IMAGE = new String[]
+            {
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_orange.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_apple.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_cherry.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_berry.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_coconut_.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_peach.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_watermelon.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_orange.png",
+                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_pomegranate.png"
+            };
+    private Image foodImage;
+    public int x;
+    public int y;
+    public int score;
+    private int SQUARE_SIZE = 25;
+
+    public void generateFood(int ROWS,int COLUMNS , Snake snake, Map map) {
+        start:
+        while (true) {
+            this.x = (int) (Math.random() * ROWS);
+            this.y = (int) (Math.random() * COLUMNS);
+
+            for (Point snakeTail : snake.snakeBody) {
+                if (snakeTail.getX() == this.x && snakeTail.getY() == this.y) {
+                    continue start;
+                }
+
+                if (isThereMap(snake, map)){
+                    continue start;
+                }
+            }
+            foodImage = new Image(FOODS_IMAGE[(int) (Math.random() * FOODS_IMAGE.length)]);
+            break;
+        }
+    }
+
+    public void drawFood(GraphicsContext gc, int SQUARE_SIZE) {
+        gc.drawImage(foodImage, this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+    }
+
+    public void eatFood(int ROWS, int COLUMNS, Snake snake, Map map) {
+        if (snake.snakeHead.getX() == this.x && snake.snakeHead.getY() == this.y) {
+            snake.snakeBody.add(new Point(-1, -1));
+            this.generateFood(ROWS,COLUMNS,snake,map);
+            this.score+=5;
+        }
+    }
+
+    public int getScore(){
+        return this.score;
+    }
+
+    public void resetScore(){
+        this.score = 0;
+    }
+
+    public void drawScore(GraphicsContext gc) {
+        gc.setFill(Color.WHITE);
+        gc.setFont(new Font("Digital-7", 35));
+        gc.fillText("Score: " + this.score, 10, 35);
+    }
+
+    public boolean isThereMap(Snake snake , Map map){
+        for (Barrier barrier : map.getMap()) {
+            if (
+                    snake.snakeHead.x*SQUARE_SIZE >= barrier.getX() &&
+                            snake.snakeHead.x*SQUARE_SIZE < (barrier.getWIDTH())&&
+                            snake.snakeHead.y*SQUARE_SIZE >= barrier.getY() &&
+                            snake.snakeHead.y*SQUARE_SIZE < (barrier.getHEIGHT())
+            ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
