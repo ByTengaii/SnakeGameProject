@@ -5,20 +5,23 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
+import java.io.File;
 
 public class Food {
-    private static final String[] FOODS_IMAGE = new String[]
-            {
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_orange.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_apple.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_cherry.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_berry.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_coconut_.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_peach.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_watermelon.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_orange.png",
-                    "C:/Java2023/SnakeGame_3/SnakeGame/src/main/resources/com/example/snakegame/img/ic_pomegranate.png"
+    //Pathway of Desktop
+    String projectPath = System.getProperty("user.dir");
+
+    private final String[] FOODS_IMAGE = new String[]
+            {projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_orange.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_apple.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_cherry.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_berry.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_coconut_.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_peach.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_watermelon.png",
+                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_pomegranate.png"
             };
     private Image foodImage;
     public int x;

@@ -187,6 +187,9 @@ public class Main2 extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+        String projectPath = System.getProperty("user.dir");
+        System.out.println(projectPath+"\\SnakeGame\\src\\main\\java\\com\\example\\snakegame\\img\\ic_orange.png");
+
     }
 }
