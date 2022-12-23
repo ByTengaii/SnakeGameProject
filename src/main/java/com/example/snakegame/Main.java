@@ -1,5 +1,6 @@
 package com.example.snakegame;
 
+import com.example.snakegame.enums.Direction;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -24,18 +26,15 @@ import java.util.List;
 
 public class Main extends Application {
 
-    private static final int WIDTH = 800;
+    private static final int WIDTH = 825;
     private static final int HEIGHT = 600;
     private static final int SQUARE_SIZE = 25;
     private static final int ROWS = WIDTH / SQUARE_SIZE;
     private static final int COLUMNS = HEIGHT / SQUARE_SIZE;
-    private static final int RIGHT = 0;
-    private static final int LEFT = 1;
-    private static final int UP = 2;
-    private static final int DOWN = 3;
+    private Direction currentDirection =Direction.RIGHT;
     private GraphicsContext gc;
     private boolean gameOver;
-    private int currentDirection;
+    private ImageView imageView;
     Snake snake = new Snake();
     Food food = new Food();
     Map map = new Map();
@@ -44,7 +43,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Snake");
         Group root = new Group();
-        Canvas canvas = new Canvas(WIDTH, HEIGHT+75);
+        Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
@@ -57,20 +56,20 @@ public class Main extends Application {
             public void handle(KeyEvent event) {
                 KeyCode code = event.getCode();
                 if (code == KeyCode.RIGHT || code == KeyCode.D) {
-                    if (currentDirection != LEFT) {
-                        currentDirection = RIGHT;
+                    if (currentDirection != Direction.LEFT) {
+                        currentDirection = Direction.RIGHT;
                     }
                 } else if (code == KeyCode.LEFT || code == KeyCode.A) {
-                    if (currentDirection != RIGHT) {
-                        currentDirection = LEFT;
+                    if (currentDirection != Direction.RIGHT) {
+                        currentDirection = Direction.LEFT;
                     }
                 } else if (code == KeyCode.UP || code == KeyCode.W) {
-                    if (currentDirection != DOWN) {
-                        currentDirection = UP;
+                    if (currentDirection != Direction.DOWN) {
+                        currentDirection = Direction.UP;
                     }
                 } else if (code == KeyCode.DOWN || code == KeyCode.S) {
-                    if (currentDirection != UP) {
-                        currentDirection = DOWN;
+                    if (currentDirection != Direction.UP) {
+                        currentDirection = Direction.DOWN;
                     }
                 }
             }
@@ -147,9 +146,11 @@ public class Main extends Application {
     public void gameOver() {
 
         //Hit the window
+        /*
         if (snake.snakeHead.x < 0 || snake.snakeHead.y < 0 || snake.snakeHead.x * SQUARE_SIZE >= WIDTH || snake.snakeHead.y * SQUARE_SIZE >= HEIGHT) {
             gameOver = true;
         }
+         */
 
         if (isThereBarrier()) {
             // Yılan engele çarptı, ölmesini sağlayın
@@ -185,6 +186,7 @@ public class Main extends Application {
         for (Barrier barrier : map.getMap()){
             barrier.barrierRender(gc);
         }
+
     }
 
     private boolean isThereBarrier(){

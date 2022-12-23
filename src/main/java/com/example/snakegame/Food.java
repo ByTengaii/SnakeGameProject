@@ -14,14 +14,14 @@ public class Food {
     String projectPath = System.getProperty("user.dir");
 
     private final String[] FOODS_IMAGE = new String[]
-            {projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_orange.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_apple.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_cherry.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_berry.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_coconut_.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_peach.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_watermelon.png",
-                    projectPath+"\\SnakeGame\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_pomegranate.png"
+            {projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_orange.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_apple.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_cherry.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_berry.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_coconut_.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_peach.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_watermelon.png",
+                    projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_pomegranate.png"
             };
     private Image foodImage;
     public int x;
