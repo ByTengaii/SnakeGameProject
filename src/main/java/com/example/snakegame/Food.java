@@ -5,14 +5,16 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
 
+import javafx.scene.media.*;
+
 public class Food {
     //Pathway of Desktop
-    String projectPath = System.getProperty("user.dir");
-
+    private String projectPath = System.getProperty("user.dir");
+    private String eatSoundPath = projectPath + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\eat_sound.mp3";
+    private MediaPlayer player;
     private final String[] FOODS_IMAGE = new String[]
             {projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_orange.png",
                     projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\ic_apple.png",
@@ -58,6 +60,10 @@ public class Food {
             snake.snakeBody.add(new Point(-1, -1));
             this.generateFood(ROWS,COLUMNS,snake,map);
             this.score+=5;
+            System.out.println(eatSoundPath);
+            Media media = new Media(new File(eatSoundPath).toURI().toString());
+            player = new MediaPlayer(media);
+            player.play();
         }
     }
 

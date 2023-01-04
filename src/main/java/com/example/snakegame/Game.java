@@ -104,15 +104,10 @@ public class Game extends Application {
             gc.fillText("Game Over", WIDTH / 3.5, HEIGHT / 2);
             return;
         }
-        //Barrier barrier = new Barrier(SQUARE_SIZE*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE*5,SQUARE_SIZE);
-        //Barrier barrier2 = new Barrier(SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE*5,SQUARE_SIZE);
-        //Barrier barriers[] = {barrier,barrier2};
         drawBackground(gc);
         renderAllBarriers(gc);
-
-        //barrier.barrier_render(gc);
         food.drawFood(gc,SQUARE_SIZE);
-        snake.drawSnake(gc,SQUARE_SIZE);
+        snake.drawSnake(gc,SQUARE_SIZE,currentDirection);
         food.drawScore(gc);
 
 
