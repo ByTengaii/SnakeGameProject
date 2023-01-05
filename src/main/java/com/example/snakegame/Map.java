@@ -1,19 +1,13 @@
 package com.example.snakegame;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
-import java.io.*;
 
 public class Map {
 
     public enum wallStation {ACTIVATED, DEACTIVATED};
     private wallStation situation = wallStation.DEACTIVATED;
-    String projectPath = System.getProperty("user.dir");
-    String imgPath = "\\src\\main\\resources\\com\\example\\snakegame\\img\\";
-    private char WALL_CODE = 'x';
     private int level;
     private int SQUARE_SIZE = 25;
 

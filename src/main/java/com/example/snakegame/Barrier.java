@@ -2,9 +2,6 @@ package com.example.snakegame;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-
-import java.awt.*;
 
 public class Barrier {
     String projectPath = System.getProperty("user.dir");

@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.media.Media;
@@ -21,13 +20,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.awt.Point;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Game extends Application {
@@ -101,7 +96,13 @@ public class Game extends Application {
         snake.snakeHead = snake.snakeBody.get(0);
         food.generateFood(ROWS,COLUMNS,snake,map);
 
-        Timeline timeline = new Timeline(new KeyFrame(speed, e -> run(gc)));
+        Timeline timeline = new Timeline(new KeyFrame(speed, e -> {
+            try {
+                run(gc, primaryStage);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -110,7 +111,7 @@ public class Game extends Application {
      * <p>Draw the graphic content for every milisecond</p>
      * @param gc GraphicContent
      */
-    private void run(GraphicsContext gc) {
+    private void run(GraphicsContext gc, Stage primaryStage) throws IOException {
         if (gameOver) {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Digital-7", 70));
@@ -144,7 +145,7 @@ public class Game extends Application {
                 break;
         }
         WalltoWall();
-        gameOver();
+        gameOver(primaryStage);
         food.eatFood(ROWS,COLUMNS,snake,map,score);
         map.changeMap(score);
         if(map.isThereBarrier(food.foodX, food.foodY)){food.generateFood(ROWS, COLUMNS , snake, map);}
@@ -172,7 +173,7 @@ public class Game extends Application {
     /**
      * <p>This method check the snake situation is it gameover ?</p>
      */
-    public void gameOver() {
+    public void gameOver(Stage primaryStage) throws IOException {
 
         if (map.isThereBarrier(snake)) {
             // Yılan hit the barrier. Kill them
@@ -180,6 +181,7 @@ public class Game extends Application {
             MediaPlayer player = new MediaPlayer(media);
             player.play();
             gameOver=true;
+            primaryStage.close();
         }
 
         //destroy itself
@@ -189,6 +191,7 @@ public class Game extends Application {
                 MediaPlayer player = new MediaPlayer(media);
                 player.play();
                 gameOver = true;
+                primaryStage.close();
                 break;
             }
         }
@@ -212,8 +215,6 @@ public class Game extends Application {
             snake.snakeHead.x = 0;
         }
     }
-
-
 
 
     public static void main(String[] args) {

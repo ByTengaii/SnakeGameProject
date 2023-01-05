@@ -2,13 +2,9 @@ package com.example.snakegame;
 
 import com.example.snakegame.enums.Direction;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
-
-
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Snake {
