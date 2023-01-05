@@ -174,8 +174,8 @@ public class Game extends Application {
     public void gameOver() {
 
         if (map.isThereBarrier(snake)) {
-            // Yılan engele çarptı, ölmesini sağlayın
-            Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\eat_sound.mp3").toURI().toString());
+            // Yılan hit the barrier. Kill them
+            Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\game_over.mp3").toURI().toString());
             MediaPlayer player = new MediaPlayer(media);
             player.play();
             gameOver=true;
@@ -184,7 +184,7 @@ public class Game extends Application {
         //destroy itself
         for (int i = 1; i < snake.snakeBody.size(); i++) {
             if (snake.snakeHead.x == snake.snakeBody.get(i).getX() && snake.snakeHead.getY() == snake.snakeBody.get(i).getY()) {
-                Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\eat_sound.mp3").toURI().toString());
+                Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\game_over.mp3").toURI().toString());
                 MediaPlayer player = new MediaPlayer(media);
                 player.play();
                 gameOver = true;

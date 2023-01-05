@@ -25,8 +25,8 @@ public class Snake {
      * @param direction Direction that coming from keyboard
      */
     public void drawSnake(GraphicsContext gc, int SQUARE_SIZE, Direction direction) {
-        // Create Image objects for each direction
 
+        // Create Image objects for each direction
         Image headUp = new Image(projectPath + "\\src\\main\\resources\\com\\example\\snakegame\\img\\new_snakeHead_up.png");
         Image headDown = new Image(projectPath + "\\src\\main\\resources\\com\\example\\snakegame\\img\\new_snakeHead_down.png");
         Image headLeft = new Image(projectPath + "\\src\\main\\resources\\com\\example\\snakegame\\img\\new_snakeHead_left.png");
