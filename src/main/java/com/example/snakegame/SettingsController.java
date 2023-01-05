@@ -12,19 +12,35 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SettingsController {
+    /**
+     * <p>Changes game difficulty to EASY</p>
+     */
     @FXML
-    public void easyPush(ActionEvent event) {
+    public void easyPush() {
         Game.difficulty = Difficulty.EASY;
     }
+
+    /**
+     * <p>Changes game difficulty to MEDIUM</p>
+     */
     @FXML
-    public void mediumPush(ActionEvent event) {
+    public void mediumPush() {
         Game.difficulty = Difficulty.MEDIUM;
     }
+
+    /**
+     * <p>Changes game difficulty to MEDIUM</p>
+     */
     @FXML
-    public void hardPush(ActionEvent event) {
+    public void hardPush() {
         Game.difficulty = Difficulty.HARD;
     }
 
+    /**
+     * <p></p>
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void returnPush(ActionEvent event) throws IOException {
         Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));

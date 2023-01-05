@@ -13,13 +13,15 @@ import javafx.util.Duration;
 import java.io.File;
 
 public class Main extends Application {
+    static MediaPlayer player;
 
-	
+	@Override
     public void start(Stage primaryStage) throws Exception {
         Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\background.mp3").toURI().toString());
-        MediaPlayer player = new MediaPlayer(media);
-        player.setStopTime(new Duration(6000));
+        player = new MediaPlayer(media);
+        //player.setStopTime(new Duration(6000));
         player.play();
+
         Pane root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Snake Game");
