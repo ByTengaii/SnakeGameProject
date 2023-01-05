@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.Point;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,12 +36,15 @@ public class Game extends Application {
     private static final int COLUMNS = HEIGHT / SQUARE_SIZE;
     private Direction currentDirection = Direction.RIGHT;
     static Difficulty difficulty = Difficulty.EASY;
-    private Duration speed = Duration.seconds(0.0);
+    public Duration speed = Duration.seconds(0.0);
     private GraphicsContext gc;
     private boolean gameOver;
     Snake snake = new Snake();
     Food food = new Food();
     Map map = new Map();
+    Score score = new Score();
+
+    public Game() {}
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -56,9 +61,9 @@ public class Game extends Application {
             case EASY ->
                     speed = Duration.millis(110);
             case MEDIUM ->
-                    speed = Duration.millis(90);
+                    speed = Duration.millis(100);
             case HARD ->
-                    speed = Duration.millis(70);
+                    speed = Duration.millis(90);
         }
 
         //Read the input
@@ -105,10 +110,10 @@ public class Game extends Application {
             return;
         }
         drawBackground(gc);
-        renderAllBarriers(gc);
+        map.renderAllBarriers(gc);
         food.drawFood(gc,SQUARE_SIZE);
         snake.drawSnake(gc,SQUARE_SIZE,currentDirection);
-        food.drawScore(gc);
+        score.drawScore(gc);
 
 
         for (int i = snake.snakeBody.size() - 1; i >= 1; i--) {
@@ -132,17 +137,20 @@ public class Game extends Application {
         }
         WalltoWall();
         gameOver();
-        food.eatFood(ROWS,COLUMNS,snake,map);
-        changeMap();
+        food.eatFood(ROWS,COLUMNS,snake,map,score);
+        map.changeMap(score);
+        if(map.isThereBarrier(food.foodX, food.foodY)){food.generateFood(ROWS, COLUMNS , snake, map);}
     }
 
     private void drawBackground(GraphicsContext gc) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 if ((i + j) % 2 == 0) {
-                    gc.setFill(Color.web("AAD751"));
+                    gc.setFill(Color.web("#2F4F4F"));
+                    //gc.setFill(Color.web("AAD751"));
                 } else {
-                    gc.setFill(Color.web("A2D149"));
+                    gc.setFill(Color.web("#696969"));
+                    //gc.setFill(Color.web("A2D149"));
                 }
                 gc.fillRect(i * SQUARE_SIZE, j * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
             }
@@ -158,7 +166,7 @@ public class Game extends Application {
         }
          */
 
-        if (isThereBarrier()) {
+        if (map.isThereBarrier(snake)) {
             // Yılan engele çarptı, ölmesini sağlayın
             gameOver=true;
         }
@@ -188,34 +196,8 @@ public class Game extends Application {
         }
     }
 
-    private void renderAllBarriers(GraphicsContext gc){
-        for (Barrier barrier : map.getMap()){
-            barrier.barrierRender(gc);
-        }
-
-    }
-
-    private boolean isThereBarrier(){
-        for (Barrier barrier : map.getMap()) {
-            if (
-                    snake.snakeHead.x*SQUARE_SIZE >= barrier.getX() &&
-                            snake.snakeHead.x*SQUARE_SIZE < (barrier.getWIDTH())&&
-                            snake.snakeHead.y*SQUARE_SIZE >= barrier.getY() &&
-                            snake.snakeHead.y*SQUARE_SIZE < (barrier.getHEIGHT())
-            ){
-                return true;
-            }
-        }
-        return false;
-    }
 
 
-    public void changeMap(){
-        if (food.getScore() == 10 && map.getIndex()+1 < map.getMapSize()){
-            map.setIndex(map.getIndex() + 1);
-            food.resetScore();
-        }
-    }
 
     public static void main(String[] args) {
         launch(args);

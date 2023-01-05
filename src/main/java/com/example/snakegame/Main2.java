@@ -96,7 +96,7 @@ public class Main2 extends Application {
         barrier.barrierRender(gc);
         food.drawFood(gc,SQUARE_SIZE);
         //snake.drawSnake(gc,SQUARE_SIZE);
-        food.drawScore(gc);
+        //food.drawScore(gc);
 
 
         for (int i = snake.snakeBody.size() - 1; i >= 1; i--) {

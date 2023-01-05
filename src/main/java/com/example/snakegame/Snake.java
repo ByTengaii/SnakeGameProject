@@ -9,15 +9,28 @@ import javafx.scene.image.Image;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Snake {
     public Point snakeHead;
-    public List<Point> snakeBody = new ArrayList();
+    public ArrayList<Point> snakeBody = new ArrayList();
 
     String projectPath = System.getProperty("user.dir");
+
     private Image headImage;
 
+    /*public void drawSnake(GraphicsContext gc, int SQUARE_SIZE) {
+        // Yılanın kafası için resim kullan
+        Image headImage = new Image(projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\snakeHead.png");
+        gc.drawImage(headImage, snakeHead.getX() * SQUARE_SIZE, snakeHead.getY() * SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
 
+        // Yılanın vücudu için resim kullan
+        Image bodyImage = new Image(projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\snakeBody.png");
+        for (int i = 1; i < snakeBody.size(); i++) {
+            gc.drawImage(bodyImage, snakeBody.get(i).getX() * SQUARE_SIZE, snakeBody.get(i).getY() * SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
+        }
+    }
+     */
     public void drawSnake(GraphicsContext gc, int SQUARE_SIZE, Direction direction) {
         // Create Image objects for each direction
 
@@ -141,8 +154,6 @@ public class Snake {
 
 
 
-
-
     public void moveRight() {
         snakeHead.x++;
     }
@@ -157,5 +168,24 @@ public class Snake {
 
     public void moveDown() {
         snakeHead.y++;
+    }
+
+    public void shrinkSnakeSize(){
+        Random random = new Random();
+        int randomNumber = random.nextInt(snakeBody.size());
+        if(randomNumber == 0){
+            int size = snakeBody.size();
+            for (int i = 0; i < size; i++) {
+                snakeBody.add(new Point(-1,-1));
+            }
+        }else{
+            if(randomNumber > snakeBody.size()/2){
+                randomNumber = snakeBody.size()/2;
+            }
+            for (int i = 0; i < randomNumber; i++) {
+                snakeBody.remove(snakeBody.size() - 1);
+            }
+        }
+
     }
 }
