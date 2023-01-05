@@ -28,7 +28,7 @@
             </Button>
             <Label id="titleLabel" fx:id="titleLabel" layoutX="31.0" layoutY="18.0" prefHeight="90.0" prefWidth="205.0" text="SNAKE GAME">
                <font>
-                  <Font name="Showcard Gothic" size="24.0" />
+                  <Font name="Showcard Gothic" size="30.0" />
                </font></Label>
          </children>
       </AnchorPane>
