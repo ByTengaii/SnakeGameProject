@@ -62,7 +62,7 @@ public class Snake {
             if (i!= (snakeBody.size()-1))
             {
                 Point afterPoint = snakeBody.get(i+1);
-                //Saat yönü
+                //ClockWise
                 if (currentPoint.getX() == prevPoint.getX() &&
                         currentPoint.getY() < prevPoint.getY() &&
                         currentPoint.getX() > afterPoint.getX() &&
@@ -96,7 +96,7 @@ public class Snake {
                     bodyImage = bodyDownCornerRight;
                 }
 
-                //Saat yönünün tersi
+                //AntiClockWise
                 else if (currentPoint.getX() > prevPoint.getX() &&
                         currentPoint.getY() == prevPoint.getY() &&
                         currentPoint.getX() == afterPoint.getX() &&
