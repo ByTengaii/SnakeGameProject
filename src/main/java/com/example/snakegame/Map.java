@@ -91,32 +91,11 @@ public class Map {
     }
 
     /**
-     * <p>Render the all barrier object that included in map object.</p>
-     * @param gc GraphicContent
+     * <p>This method check the barrier for food spawn. If the location is part of any barrier. The food is not spawn. </p>
+     * @param foodX X cordinate of food
+     * @param foodY Y coordinate of food
+     * @return
      */
-
-    public void renderAllBarriers(GraphicsContext gc){
-        for (Barrier barrier : Maps[this.level]){
-            barrier.barrierRender(gc);
-        }
-        if(getWallStation() == wallStation.DEACTIVATED){
-            gc.setFill(Color.WHITE);
-            gc.setFont(new Font("Digital-7", 15));
-            gc.fillText("Walls: " + this.station.toString(), 10, 15);
-        }
-    }
-
-    /**
-     * <p>This method change the level design if score reach the 100.</p>
-     * @param score score
-     */
-    public void changeMap(Score score){
-        if (score.getScore() >= 100 && getLevel()+1 < getMapSize()){
-            setLevel(getLevel() + 1);
-            score.setScore(-score.getScore());
-        }
-    }
-
     public boolean isThereBarrier( int foodX, int foodY){
         for (Barrier barrier : getMap()) {
             if
@@ -144,5 +123,35 @@ public class Map {
         }
         return false;
     }
+
+
+    /**
+     * <p>Render the all barrier object that included in map object.</p>
+     * @param gc GraphicContent
+     */
+
+    public void renderAllBarriers(GraphicsContext gc){
+        for (Barrier barrier : Maps[this.level]){
+            barrier.barrierRender(gc);
+        }
+        if(getWallStation() == wallStation.DEACTIVATED){
+            gc.setFill(Color.WHITE);
+            gc.setFont(new Font("Digital-7", 15));
+            gc.fillText("Walls: " + this.station.toString(), 10, 15);
+        }
+    }
+
+    /**
+     * <p>This method change the level design if score reach the 100.</p>
+     * @param score score
+     */
+    public void changeMap(Score score){
+        if (score.getScore() >= 100 && getLevel()+1 < getMapSize()){
+            setLevel(getLevel() + 1);
+            score.setScore(-score.getScore());
+        }
+    }
+
+
 
 }

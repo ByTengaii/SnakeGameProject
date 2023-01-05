@@ -20,6 +20,10 @@ public class Score {
         this.score += score;
     }
 
+    /**
+     * <p>Set visible a score table on map </p>
+     * @param gc Graphic Content
+     */
     public void drawScore(GraphicsContext gc) {
         gc.setFill(Color.WHITE);
         gc.setFont(new Font("Digital-7", 35));

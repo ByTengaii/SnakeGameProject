@@ -30,7 +30,6 @@ public class MenuController extends Main{
 
 
 
-
     @FXML
     public void playPush(ActionEvent event) throws Exception {
         Stage stage = new Stage();

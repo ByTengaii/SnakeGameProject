@@ -16,20 +16,13 @@ public class Snake {
     public ArrayList<Point> snakeBody = new ArrayList();
 
     String projectPath = System.getProperty("user.dir");
-
     private Image headImage;
 
-    /*public void drawSnake(GraphicsContext gc, int SQUARE_SIZE) {
-        // Yılanın kafası için resim kullan
-        Image headImage = new Image(projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\snakeHead.png");
-        gc.drawImage(headImage, snakeHead.getX() * SQUARE_SIZE, snakeHead.getY() * SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
-
-        // Yılanın vücudu için resim kullan
-        Image bodyImage = new Image(projectPath+"\\src\\main\\resources\\com\\example\\snakegame\\img\\snakeBody.png");
-        for (int i = 1; i < snakeBody.size(); i++) {
-            gc.drawImage(bodyImage, snakeBody.get(i).getX() * SQUARE_SIZE, snakeBody.get(i).getY() * SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
-        }
-    }
+    /**
+     * <p>This method set the snake visible on the map</p>
+     * @param gc Graphic Content
+     * @param SQUARE_SIZE Square size of the map
+     * @param direction Direction that coming from keyboard
      */
     public void drawSnake(GraphicsContext gc, int SQUARE_SIZE, Direction direction) {
         // Create Image objects for each direction
@@ -169,6 +162,7 @@ public class Snake {
     public void moveDown() {
         snakeHead.y++;
     }
+
 
     public void shrinkSnakeSize(){
         Random random = new Random();
