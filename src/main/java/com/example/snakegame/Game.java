@@ -109,7 +109,7 @@ public class Game extends Application {
         if (gameOver) {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Digital-7", 70));
-            gc.fillText("Game Over", WIDTH / 3.5, HEIGHT / 2);
+            gc.fillText("Game Over \n Please Enter for the close the game", WIDTH / 3.5, HEIGHT / 2);
             return;
         }
         drawBackground(gc);
@@ -165,7 +165,7 @@ public class Game extends Application {
     }
 
     /**
-     * <p>This method check the snake situation is it gameover ?</p>
+     * <p>This method check the snake situation is it game over ?</p>
      */
     public void gameOver() {
 
