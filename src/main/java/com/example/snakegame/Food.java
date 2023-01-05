@@ -37,6 +37,13 @@ public class Food extends PowerUp{
     public int foodY;
     private int SQUARE_SIZE = 25;
 
+    /**
+     * <p>Generate cordinates for spawn a food on the map</p>
+     * @param ROWS Row numbers of map
+     * @param COLUMNS Colum numbers of map
+     * @param snake snake object for don't spawn the food on the snake
+     * @param map map object that food will spawn on
+     */
     public void generateFood(int ROWS,int COLUMNS , Snake snake, Map map) {
         start:
         while (true) {
@@ -72,6 +79,11 @@ public class Food extends PowerUp{
         }
     }
 
+    /**
+     * <p>The food object becomes visible on the map</p>
+     * @param gc graphic content
+     * @param SQUARE_SIZE Square size of the map.
+     */
     public void drawFood(GraphicsContext gc, int SQUARE_SIZE) {
         gc.drawImage(
                 foodImage,
@@ -82,6 +94,15 @@ public class Food extends PowerUp{
         );
     }
 
+    /**
+     * <p>When the snake eat a food, snake get point and powerups.
+     * This method check snake is eating food or not ?</p>
+     * @param ROWS Row numbers of map
+     * @param COLUMNS Colum numbers of map
+     * @param snake The snake which eat the food
+     * @param map The map that playing on
+     * @param score score
+     */
     public void eatFood(int ROWS, int COLUMNS, Snake snake, Map map,Score score) {
         if (snake.snakeHead.getX() == this.foodX && snake.snakeHead.getY() == this.foodY) {
             switch (getType()){
