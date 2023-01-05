@@ -44,6 +44,7 @@ public class Food extends PowerUp{
      * @param snake snake object for don't spawn the food on the snake
      * @param map map object that food will spawn on
      */
+
     public void generateFood(int ROWS,int COLUMNS , Snake snake, Map map) {
         start:
         while (true) {
@@ -109,24 +110,24 @@ public class Food extends PowerUp{
                 case CHANGE_SNAKE_SIZE -> {
                     System.out.println("Shrinked");
                     snake.shrinkSnakeSize();
-                    map.setWallStation(Map.wallStation.ACTIVATED);
+                    map.setWallSituation(Map.wallStation.ACTIVATED);
                 }
                 case WALLS_DEACTIVATED -> {
                     System.out.println("Wall");
                     snake.snakeBody.add(new Point(-1, -1));
-                    map.setWallStation(Map.wallStation.DEACTIVATED);
+                    map.setWallSituation(Map.wallStation.DEACTIVATED);
                 }
                 case BONUS_POINT -> {
                     System.out.println("bonus");
                     Random random = new Random();
                     score.setScore(random.nextInt(5)*5);
-                    map.setWallStation(Map.wallStation.ACTIVATED);
+                    map.setWallSituation(Map.wallStation.ACTIVATED);
                 }
                 case CLASSIC -> {
                     System.out.println("classic");
                     snake.snakeBody.add(new Point(-1, -1));
                     score.setScore(5);
-                    map.setWallStation(Map.wallStation.ACTIVATED);
+                    map.setWallSituation(Map.wallStation.ACTIVATED);
                 }
 
             }

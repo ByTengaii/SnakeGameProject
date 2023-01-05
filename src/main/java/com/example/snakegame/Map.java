@@ -1,6 +1,7 @@
 package com.example.snakegame;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -9,10 +10,9 @@ import java.io.*;
 public class Map {
 
     public enum wallStation {ACTIVATED, DEACTIVATED};
-    private wallStation station = wallStation.DEACTIVATED;
-    private File[] gameMapFiles;
+    private wallStation situation = wallStation.DEACTIVATED;
     String projectPath = System.getProperty("user.dir");
-    String mapsPath = "\\src\\main\\java\\com\\example\\snakegame\\maps";
+    String imgPath = "\\src\\main\\resources\\com\\example\\snakegame\\img\\";
     private char WALL_CODE = 'x';
     private int level;
     private int SQUARE_SIZE = 25;
@@ -37,27 +37,58 @@ public class Map {
         this.level = 0;
     }
 
-
-    public wallStation getWallStation(){
-        return this.station;
+    /**
+     * <p>The function is a getter method.</p>
+     * @return the wall station.
+     */
+    public wallStation getWallSituation(){
+        return this.situation;
     }
 
-    public void setWallStation(wallStation station){
-        this.station = station;
+    /**
+     * <p>The function is a setter method.</p>
+     * @param situation The situation which is will set the current.
+     */
+    public void setWallSituation(wallStation situation){
+        this.situation = situation;
     }
 
+    /**
+     * <p>The function is a getter method for level.</p>
+     * @return the map level.
+     */
     public int getLevel(){ return this.level; }
 
+    /**
+     * <p>The function is set the current level of map.</p>
+     * @param level The level which is will set the current level.
+     */
     public void setLevel(int level) { this.level = level; }
 
-
+    /**
+     * <p>The function is a getter method for map size.</p>
+     * @return the Maps array's length.
+     */
     public int getMapSize(){
         return Maps.length;
     }
 
+    /**
+     * <p>
+     *     The function is a getter method for map. There are two different function for this.
+     *     This is one of them and the function is directly getter the current map.
+     * </p>
+     * @return the current map in the Maps array.
+     */
     public Barrier[] getMap(){
         return this.Maps[this.level];
     }
+
+    /**
+     * <p>This is the other getter map function. The function is getter the one of next maps.</p>
+     * @param level Which level we want to get.
+     * @return the map which we want to get.
+     */
     public Barrier[] getMap(int level){
         if(this.level != Maps.length-1){
             return this.Maps[this.level+level];
@@ -73,7 +104,7 @@ public class Map {
      * @return true or false value. If snake touch the barrier return true, If it don't, return false.
      */
     public boolean isThereBarrier(Snake snake){
-        if(getWallStation() == wallStation.ACTIVATED){
+        if(getWallSituation() == wallStation.ACTIVATED){
             for (Barrier barrier : Maps[this.level]) {
                 if (
                         snake.snakeHead.x*SQUARE_SIZE >= barrier.getX() &&
@@ -132,12 +163,17 @@ public class Map {
 
     public void renderAllBarriers(GraphicsContext gc){
         for (Barrier barrier : Maps[this.level]){
-            barrier.barrierRender(gc);
+            if(getWallSituation() == wallStation.ACTIVATED){
+                barrier.barrierRender(gc,true);
+            }else{
+                barrier.barrierRender(gc,false);
+            }
+
         }
-        if(getWallStation() == wallStation.DEACTIVATED){
+        if(getWallSituation() == wallStation.DEACTIVATED){
             gc.setFill(Color.WHITE);
             gc.setFont(new Font("Digital-7", 15));
-            gc.fillText("Walls: " + this.station.toString(), 10, 15);
+            gc.fillText("                                   "+"Walls: " + this.situation.toString(), 10, 15);
         }
     }
 
