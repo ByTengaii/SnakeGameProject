@@ -182,7 +182,7 @@ public class Map {
      * @param score score
      */
     public void changeMap(Score score){
-        if (score.getScore() >= 100 && getLevel()+1 < getMapSize()){
+        if (score.getScore() >= 30 && getLevel()+1 < getMapSize()){
             setLevel(getLevel() + 1);
             score.setScore(-score.getScore());
         }

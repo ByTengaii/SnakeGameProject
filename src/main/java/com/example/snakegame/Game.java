@@ -57,6 +57,7 @@ public class Game extends Application {
         root.getChildren().add(canvas);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image(System.getProperty("user.dir")+"\\src\\main\\resources\\com\\example\\snakegame\\img\\about.png"));
         primaryStage.show();
         gc = canvas.getGraphicsContext2D();
 

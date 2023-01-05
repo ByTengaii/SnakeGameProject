@@ -3,6 +3,7 @@ package com.example.snakegame;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -14,7 +15,6 @@ import java.io.File;
 
 public class Main extends Application {
     static MediaPlayer player;
-
 	@Override
     public void start(Stage primaryStage) throws Exception {
         Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\background.mp3").toURI().toString());
@@ -27,6 +27,7 @@ public class Main extends Application {
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image(System.getProperty("user.dir")+"\\src\\main\\resources\\com\\example\\snakegame\\img\\about.png"));
         primaryStage.show();
     }
 
