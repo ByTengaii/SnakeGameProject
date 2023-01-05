@@ -131,6 +131,7 @@ public class Food extends PowerUp{
 
             }
             this.generateFood(ROWS,COLUMNS,snake,map);
+
             Media media = new Media(new File(eatSoundPath).toURI().toString());
             player = new MediaPlayer(media);
             player.play();

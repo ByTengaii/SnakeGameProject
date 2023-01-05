@@ -15,12 +15,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -172,12 +175,18 @@ public class Game extends Application {
 
         if (map.isThereBarrier(snake)) {
             // Yılan engele çarptı, ölmesini sağlayın
+            Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\eat_sound.mp3").toURI().toString());
+            MediaPlayer player = new MediaPlayer(media);
+            player.play();
             gameOver=true;
         }
 
         //destroy itself
         for (int i = 1; i < snake.snakeBody.size(); i++) {
             if (snake.snakeHead.x == snake.snakeBody.get(i).getX() && snake.snakeHead.getY() == snake.snakeBody.get(i).getY()) {
+                Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\eat_sound.mp3").toURI().toString());
+                MediaPlayer player = new MediaPlayer(media);
+                player.play();
                 gameOver = true;
                 break;
             }

@@ -14,27 +14,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MenuController extends Main{
-    @FXML
-    Label label;
-
-    Text text = new Text();
-    Font font = Font.loadFont("C:\\Users\\ÖZHÖLÇEK\\IdeaProjects\\SnakeGame" +
-            "\\src\\main\\resources\\com\\example\\snakegame\\Eyvindur.ttf", 35);
-
-    @Override
-    public void init() throws Exception {
-        text.setText("SNAKE GAME");
-        text.setFont(font);
-        label.setFont(font);
-    }
-
-
 
     @FXML
     public void playPush(ActionEvent event) throws Exception {
         Stage stage = new Stage();
         Game game = new Game();
         game.start(stage);
+
     }
 
     @FXML
