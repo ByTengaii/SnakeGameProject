@@ -102,6 +102,10 @@ public class Game extends Application {
         timeline.play();
     }
 
+    /**
+     * <p>Draw the graphic content for every milisecond</p>
+     * @param gc GraphicContent
+     */
     private void run(GraphicsContext gc) {
         if (gameOver) {
             gc.setFill(Color.RED);
@@ -142,6 +146,10 @@ public class Game extends Application {
         if(map.isThereBarrier(food.foodX, food.foodY)){food.generateFood(ROWS, COLUMNS , snake, map);}
     }
 
+    /**
+     *<p>This method draw the background</p>
+     * @param gc GraphicContent
+     */
     private void drawBackground(GraphicsContext gc) {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
@@ -157,14 +165,10 @@ public class Game extends Application {
         }
     }
 
+    /**
+     * <p>This method check the snake situation is it gameover ?</p>
+     */
     public void gameOver() {
-
-        //Hit the window
-        /*
-        if (snake.snakeHead.x < 0 || snake.snakeHead.y < 0 || snake.snakeHead.x * SQUARE_SIZE >= WIDTH || snake.snakeHead.y * SQUARE_SIZE >= HEIGHT) {
-            gameOver = true;
-        }
-         */
 
         if (map.isThereBarrier(snake)) {
             // Yılan engele çarptı, ölmesini sağlayın
@@ -174,12 +178,15 @@ public class Game extends Application {
         //destroy itself
         for (int i = 1; i < snake.snakeBody.size(); i++) {
             if (snake.snakeHead.x == snake.snakeBody.get(i).getX() && snake.snakeHead.getY() == snake.snakeBody.get(i).getY()) {
-                gameOver = false;
+                gameOver = true;
                 break;
             }
         }
     }
 
+    /**
+     * <p>This method add to teleport wall to across wall properties.</p>
+     */
     private void WalltoWall()
     {
         if (snake.snakeHead.y < 0) {
