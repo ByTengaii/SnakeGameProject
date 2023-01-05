@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Pane root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("menu.css");
+        //scene.getStylesheets().add("menu.css");
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
