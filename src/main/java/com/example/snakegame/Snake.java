@@ -146,24 +146,38 @@ public class Snake {
     }
 
 
-
+    /**
+     * <p>The function makes the snake go right.</p>
+     */
     public void moveRight() {
         snakeHead.x++;
     }
 
+    /**
+     * <p>The function makes the snake go left.</p>
+     */
     public void moveLeft() {
         snakeHead.x--;
     }
 
+    /**
+     * <p>The function makes the snake go up.</p>
+     */
     public void moveUp() {
         snakeHead.y--;
     }
 
+    /**
+     * <p>The function makes the snake go down.</p>
+     */
     public void moveDown() {
         snakeHead.y++;
     }
 
 
+    /**
+     * <p>The function is shrink the snake size randomly.</p>
+     */
     public void shrinkSnakeSize(){
         Random random = new Random();
         int randomNumber = random.nextInt(snakeBody.size());

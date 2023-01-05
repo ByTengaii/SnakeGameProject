@@ -11,10 +11,17 @@ public class PowerUp {
         this.setType();
     }
 
+    /**
+     * <p>Getter method.</p>
+     * @return Return the type of power up.
+     */
     public powerType getType(){
         return this.type;
     }
 
+    /**
+     * <p>The function is set a random type for food. There is 4 different type for food.</p>
+     */
     public void setType(){
         /*
         *
