@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class Food extends PowerUp{
     //Pathway of Desktop
-    String projectPath = System.getProperty("user.dir");
-    String imgPath = "\\src\\main\\resources\\com\\example\\snakegame\\img\\";
+    public String projectPath = System.getProperty("user.dir");
+    public String imgPath = "\\src\\main\\resources\\com\\example\\snakegame\\img\\";
     private MediaPlayer player;
     private String eatSoundPath = projectPath + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\eat_sound.mp3";
 
@@ -29,7 +29,6 @@ public class Food extends PowerUp{
     private Image foodImage;
     public int foodX;
     public int foodY;
-    private int SQUARE_SIZE = 25;
 
     /**
      * <p>Generate cordinates for spawn a food on the map</p>

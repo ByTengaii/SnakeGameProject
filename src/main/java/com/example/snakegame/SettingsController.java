@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class SettingsController {
     /**
-     * <p>Changes game difficulty to EASY</p>
+     * <p>Changes game difficulty to EASY, when click Easy button</p>
      */
     @FXML
     public void easyPush() {
@@ -20,7 +20,7 @@ public class SettingsController {
     }
 
     /**
-     * <p>Changes game difficulty to MEDIUM</p>
+     * <p>Changes game difficulty to MEDIUM, when click Medium button</p>
      */
     @FXML
     public void mediumPush() {
@@ -28,7 +28,7 @@ public class SettingsController {
     }
 
     /**
-     * <p>Changes game difficulty to MEDIUM</p>
+     * <p>Changes game difficulty to MEDIUM, when click Hard button</p>
      */
     @FXML
     public void hardPush() {
@@ -36,7 +36,7 @@ public class SettingsController {
     }
 
     /**
-     * <p></p>
+     * <p>Close Setting window and opens Menu window</p>
      * @param event
      * @throws IOException
      */

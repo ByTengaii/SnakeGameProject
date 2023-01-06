@@ -12,12 +12,20 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class Main extends Application {
-    static MediaPlayer player;
+    public static MediaPlayer player;
+
+    /**
+     * <p>The start method of Application class opens Menu window</p>
+     * @param primaryStage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     * @throws Exception
+     */
 	@Override
     public void start(Stage primaryStage) throws Exception {
         Media media = new Media(new File(System.getProperty("user.dir") + "\\src\\main\\resources\\com\\example\\snakegame\\sounds\\background.mp3").toURI().toString());
         player = new MediaPlayer(media);
-        //player.setStopTime(new Duration(6000));
         player.play();
 
         Pane root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -29,7 +37,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    /**
+     *
+     */
+    public static void main() {
+        launch();
     }
 }

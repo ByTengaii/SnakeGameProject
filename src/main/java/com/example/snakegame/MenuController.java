@@ -10,29 +10,29 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class MenuController extends Main{
+public class MenuController{
     /**
-     *
+     * <p>Opens Game window when clicks Play button.</p>
      * @throws Exception
      */
     @FXML
     public void playPush() throws Exception {
         Main.player.stop();
         Stage stage = new Stage();
+        stage.setResizable(false);
         Game game = new Game();
         game.start(stage);
     }
 
     /**
-     *
+     * <p>Opens settings window, when click Settings button.</p>
      * @param event
      * @throws Exception
      */
     @FXML
-    public void settingPush(ActionEvent event)throws Exception {
+    public void settingPush(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Scene settingScene = new Scene(root);
-        //Stage stage = new Stage();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(settingScene);
         stage.getIcons().add(new Image(System.getProperty("user.dir")+"\\src\\main\\resources\\com\\example\\snakegame\\img\\about.png"));
@@ -40,7 +40,7 @@ public class MenuController extends Main{
     }
 
     /**
-     * <p>This method close game</p>
+     * <p>This method close Menu window</p>
      * @throws IOException
      */
     @FXML

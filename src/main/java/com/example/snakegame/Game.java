@@ -109,7 +109,7 @@ public class Game extends Application {
         if (gameOver) {
             gc.setFill(Color.RED);
             gc.setFont(new Font("Digital-7", 70));
-            gc.fillText("Game Over \n Please Enter for the close the game", WIDTH / 3.5, HEIGHT / 2);
+            //gc.fillText("Game Over \n Please Enter for the close the game", WIDTH / 3.5, HEIGHT / 2);
             return;
         }
         drawBackground(gc);
@@ -209,9 +209,10 @@ public class Game extends Application {
     }
 
 
-
-
-    public static void main(String[] args) {
-        launch(args);
+    /**
+     * <p>starts start method of Application</p>
+     */
+    public static void main() {
+        launch();
     }
 }

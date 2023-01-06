@@ -33,7 +33,7 @@
                   </Button>
                </children>
             </HBox>
-            <Label alignment="CENTER" layoutX="57.0" layoutY="14.0" prefHeight="40.0" prefWidth="161.0" text="Game mode " textAlignment="CENTER" textFill="#fff3dc">
+            <Label alignment="CENTER" layoutX="59.0" layoutY="24.0" prefHeight="40.0" prefWidth="161.0" text="Game mode " textAlignment="CENTER" textFill="#fff3dc">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -62,12 +62,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="return_button" layoutX="19.0" layoutY="349.0" onAction="#returnPush" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #11b341;" text="Return" textFill="#fff3dc">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="save" layoutX="139.0" layoutY="349.0" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #11b341;" text="Save" textFill="#fff3dc">
+            <Button fx:id="return_button" layoutX="81.0" layoutY="347.0" onAction="#returnPush" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: #11b341;" text="Return" textFill="#fff3dc">
                <font>
                   <Font size="18.0" />
                </font>
