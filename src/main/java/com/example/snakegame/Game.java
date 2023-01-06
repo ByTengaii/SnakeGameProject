@@ -20,7 +20,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.awt.Point;
 import java.io.File;
 
@@ -41,8 +40,6 @@ public class Game extends Application {
     Food food = new Food();
     Map map = new Map();
     Score score = new Score();
-
-    public Game() {}
 
     @Override
     public void start(Stage primaryStage) throws Exception {
