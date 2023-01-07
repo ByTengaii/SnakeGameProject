@@ -42,7 +42,7 @@ public class Game extends Application {
     Score score = new Score();
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("Snake");
         Group root = new Group();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);

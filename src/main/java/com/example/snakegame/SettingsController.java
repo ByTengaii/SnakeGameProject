@@ -36,13 +36,17 @@ public class SettingsController {
     }
 
     /**
-     * <p>Close Setting window and opens Menu window</p>
-     * @param event
-     * @throws IOException
+     * <p>Closes Setting window and opens Menu window</p>
+     * @param event Used to close the Setting Menu
      */
     @FXML
-    public void returnPush(ActionEvent event) throws IOException {
-        Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+    public void returnPush(ActionEvent event) {
+        Parent menu = null;
+        try {
+            menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Scene exit = new Scene(menu);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(exit);

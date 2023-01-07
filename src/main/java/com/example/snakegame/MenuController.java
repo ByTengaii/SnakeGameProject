@@ -13,10 +13,9 @@ import java.io.IOException;
 public class MenuController{
     /**
      * <p>Opens Game window when clicks Play button.</p>
-     * @throws Exception
      */
     @FXML
-    public void playPush() throws Exception {
+    public void playPush() {
         Main.player.stop();
         Stage stage = new Stage();
         stage.setResizable(false);
@@ -26,11 +25,12 @@ public class MenuController{
 
     /**
      * <p>Opens settings window, when click Settings button.</p>
-     * @param event
-     * @throws Exception
+     * @param event Used to close the currently open window
+     * @throws IOException If an input or output
+     *                     exception occurred
      */
     @FXML
-    public void settingPush(ActionEvent event) throws Exception {
+    public void settingPush(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
         Scene settingScene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -40,11 +40,10 @@ public class MenuController{
     }
 
     /**
-     * <p>This method close Menu window</p>
-     * @throws IOException
+     * <p>Closes Menu window</p>
      */
     @FXML
-    public void exitPush()throws IOException {
+    public void exitPush() {
         System.exit(0);
     }
 }
